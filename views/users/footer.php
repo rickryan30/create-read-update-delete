@@ -12,8 +12,7 @@
 		
     <!-- javascript goes here  -->
     <script>
-      var base_url = "<?php echo base_url();?>create-read-update-delete/";     
-      console.log(base_url);
+      var base_url = "<?php echo base_url();?>create-read-update-delete/"; 
 		</script>
     <!-- end of javascript -->
     </body>
