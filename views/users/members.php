@@ -1,24 +1,5 @@
 <?php 
-  session_start(); 
   include ROOT.DS.'views'.DS.'users'.DS."header.php";
-  include ROOT.DS.'models'.DS."publicModels.php";
-
-  $user = new User_Model();
-
-  $where = array(
-      "id" => $_SESSION['id']
-  );
-
-  $userID = $user->getBy($where);
-  $userStatus = $userID[0]->status;
-  
-  if($user->isloggedin()){
-    $id = $_SESSION['id'];
-    $userName = $_SESSION['username'];
-  } else {
-    $user->redirect('logout');
-    exit();
-  }
   include ROOT.DS.'views'.DS.'users'.DS."header-menu.php";
 ?>
 

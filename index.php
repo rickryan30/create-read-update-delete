@@ -68,6 +68,10 @@ $router->match('GET|POST', '/controller/login([a-z0-9_-]+)?', function() {
     require ROOT.DS.'controllers'.DS.'users'.DS.'select_user_controller.php';
 });
 
+$router->match('GET|POST', '/controller/update([a-z0-9_-]+)?', function() {
+    require ROOT.DS.'controllers'.DS.'users'.DS.'update_user_controller.php';
+});
+
 
 /* --- views route --- */
 $router->get('', function() {

@@ -1,6 +1,8 @@
 <?php 
   include ROOT.DS.'views'.DS.'users'.DS."header.php";
+  include ROOT.DS.'views'.DS.'users'.DS."header-menu.php";
 ?>
+
 
 <div class="container">
   <form>
@@ -10,8 +12,8 @@
        
         <div class="col-md-6">
           <div class="form-group">
-              <label for="Password">Password</label>
-              <input type="password" class="form-control" id="Password">
+              <label for="Password">Current Password</label>
+              <input type="password" class="form-control" id="password">
             </div><!-- end of form group -->
         </div><!-- end of col-md-6 left-->
       
@@ -35,7 +37,7 @@
         
         <div class="col-md-12 text-right">
         <button type="reset" class="btn btn-danger">Clear</button>
-          <button type="submit" class="btn btn-primary">Change</button>
+          <button type="submit" class="btn btn-primary" id="btn-change-passwod">Change</button>
         </div><!-- end of col-md-12 -->
 
       </div><!-- end of row -->

@@ -144,7 +144,78 @@ function login_user(){
 
 /* end of select user */
 
+/* update user */
+function update_user(){ 
+  $(document).on("click","#btn-update",function(e) { 
+     e.preventDefault();
+
+     var fullname=$("#fullname").val();
+     var email=$("#email").val();
+     var username=$("#username").val();
+     var password=$("#password").val();
+     var uID=$("#uID").val();
+
+     if(email!="" && password!="" && fullname!="" && username!=""){
+
+         var fields = {
+             update_user:"update_user",
+             fullname: fullname,
+             email: email,
+             username: username,
+             password: password,
+             uID: uID,
+         };
+
+         jQuery.ajax({
+             url : base_url+"controller/update",
+             type : "POST",
+             dataType : "JSON",
+             data : fields,
+             success : function(data){
+                 if(data.success == true){
+                     Swal({ 
+                         title: "Success!",
+                         text: "Updated Successfully.",
+                         type: "success",
+                         confirmButtonText: "OK",
+                         closeOnConfirm: false
+                     }).then((result) => {
+                         if (result.value) {
+                             window.location.href = base_url+"update";
+                         }
+                     })
+
+                 }else{
+                     Swal({
+                         title: "Error!",
+                         text: "Update Failed",
+                         type: "error",
+                         confirmButtonText: "OK",
+                         closeOnConfirm: false
+                     }).then((result) => {
+                         if (result.value) {
+                             location.reload();
+                         }
+                     })
+                 }
+             }
+         });
+
+     }else{
+         Swal({
+             title: "Warning!",
+             text: "Please fill in the selected inputs.",
+             type: "warning",
+             confirmButtonText: "OK",
+             closeOnConfirm: false
+         })
+     }
+ });
+}
+/* end of update user */
+
 jQuery(function () {
   register_user();
   login_user();
+  update_user();
 });
