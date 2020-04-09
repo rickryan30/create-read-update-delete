@@ -1,7 +1,7 @@
 <?php
 /*  
  * set your base url here*/ 
-$base_url = 'https://'.$_SERVER['SERVER_NAME'].DS.'crud'.DS;
+$base_url = 'https://'.$_SERVER['SERVER_NAME'].DS.'create-read-update-delete'.DS;
  
 /* 
  * set your default controller here*/

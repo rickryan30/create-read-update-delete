@@ -12,7 +12,7 @@
 		
     <!-- javascript goes here  -->
     <script>
-      var base_url = "<?php echo base_url();?>crud/";     
+      var base_url = "<?php echo base_url();?>create-read-update-delete/";     
       console.log(base_url);
 		</script>
     <!-- end of javascript -->
