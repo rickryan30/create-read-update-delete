@@ -1,0 +1,16 @@
+.form-box {
+    margin-top: 40px;
+    border: 1px solid #d2c7c7;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.row.header-menu {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.bt-display {
+    display: inline-block;
+    margin-left: 20px;
+}
