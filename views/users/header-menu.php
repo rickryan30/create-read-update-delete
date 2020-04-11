@@ -3,7 +3,7 @@
   include ROOT.DS.'models'.DS."publicModels.php";
 
   $user = new User_Model();
-
+  
   $where = array(
       "id" => $_SESSION['id']
   );

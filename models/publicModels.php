@@ -14,7 +14,7 @@
                 $total_res = $stmt->rowCount();
 
                 if($total_res > 0){
-                    if(isset($user) && password_verify($data["password"],$user->password)){
+                    if(isset($user) && password_verify($data["password"],$user->password)){ 
                         $_SESSION['id'] = $user->id;
                         $_SESSION['fullname'] = $user->fullname;
                         $_SESSION['username'] = $user->username;
@@ -31,12 +31,34 @@
             }
         }
 
-                public function isloggedin(){
-                    if(isset($_SESSION['id'])) {
+        public function user_change_password($data){
+             
+            try {
+                $stmt = $this->DB_con->prepare("SELECT * FROM users WHERE id = :uID");
+                $stmt->bindValue(':uID', $data["id"]);
+                $stmt->execute();
+                $user = $stmt->fetch(PDO::FETCH_OBJ);
+                $total_res = $stmt->rowCount();
+
+                if($total_res > 0){
+                    if(isset($user) && password_verify($data["password"],$user->password)){ 
                         return true;
                     }
-                    return false;
-                }
+                   
+                
+                 } return false;
+               
+            } catch(PDOException $e) {
+                die("Query Error: ". $e->getMessage());
+            }
+        }
+
+        public function isloggedin(){
+            if(isset($_SESSION['id'])) {
+                return true;
+            }
+            return false;
+        }
  
         public function redirect($url){
             header("Location: $url");

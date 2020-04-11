@@ -9,7 +9,9 @@
     <h3>Members</h3><br>
       <div class="row">
        
-        something
+       <div class="col-md-12">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio voluptatum, similique earum, assumenda unde ipsa animi quidem quibusdam ducimus nesciunt quod numquam magnam vel possimus ipsam iusto porro autem atque?
+       </div>
 
       </div><!-- end of row -->
     </div><!-- end of form-box -->

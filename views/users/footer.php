@@ -13,6 +13,11 @@
     <!-- javascript goes here  -->
     <script>
       var base_url = "<?php echo base_url();?>create-read-update-delete/"; 
+
+      $(document).ready( function () {
+			    $('#myTable').DataTable();
+          $('[data-tooltip="tooltip"]').tooltip();
+      });
 		</script>
     <!-- end of javascript -->
     </body>

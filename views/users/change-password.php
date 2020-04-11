@@ -16,6 +16,12 @@
               <input type="password" class="form-control" id="password">
             </div><!-- end of form group -->
         </div><!-- end of col-md-6 left-->
+
+        <div class="col-md-6">
+             <div class="form-group">
+            <input type="hidden" class="form-control" id="uID" value="<?php echo (!empty($userID[0]->id)) ? $userID[0]->id : '' ?>">
+            </div><!-- end of form group -->
+        </div>
       
       </div><!-- end of row -->
 
@@ -37,7 +43,7 @@
         
         <div class="col-md-12 text-right">
         <button type="reset" class="btn btn-danger">Clear</button>
-          <button type="submit" class="btn btn-primary" id="btn-change-passwod">Change</button>
+          <button type="submit" class="btn btn-primary" id="btn-change-password">Change</button>
         </div><!-- end of col-md-12 -->
 
       </div><!-- end of row -->

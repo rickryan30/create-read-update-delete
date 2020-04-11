@@ -14,3 +14,16 @@
     display: inline-block;
     margin-left: 20px;
 }
+
+#myTable thead tr th {
+    text-align: center;
+}
+
+#myTable tbody tr td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #dee2e6;
+}

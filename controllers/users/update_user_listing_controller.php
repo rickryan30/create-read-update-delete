@@ -9,8 +9,7 @@
     $user = new User_Model();
 
 	error_reporting( ~E_NOTICE );
-	if (isset($_POST['update_user'])) {
-			
+	if (isset($_POST['update_user_listing'])) {
 			$userID = $_POST['uID'];
 			$password = $_POST['password'];
 
@@ -20,13 +19,13 @@
 			
 			$usr = $user->getBy($where);
 
-			if (password_verify($password, $usr[0]->password) ) {
+			
 				$data = [
 			        'fullname' => $_POST['fullname'],
 			        'email' => $_POST['email'],
 			        'username' => $_POST['username'],
-			        // 'password' => $_POST['password'],
-			        // 'id' => $_POST['uID']
+			        'status' => $_POST['status'],
+			        'id' => $_POST['uID']
 			      ];
 
 			      $whereId = array(
@@ -38,16 +37,6 @@
 			      echo json_encode(array(
 		                "success" => true
 		            ));
-		            return false;
-
-			} 
-
-			else {
-				echo json_encode(array(
-	                "success" => false
-	            ));
-	            return false;
-			}
 
 	}
 ?>
