@@ -27,3 +27,14 @@
 table.dataTable.no-footer {
     border-bottom: 1px solid #dee2e6;
 }
+
+.col-md-12.footer {
+    text-align: center;
+    margin: 50px auto;
+    font-weight: 700;
+    color: #6c757d;
+}
+
+.footer span {
+    color: #5f6fad;
+}

@@ -61,69 +61,73 @@ if(isset($url[4])){
 
 /* --- controller route --- */
 $router->match('GET|POST', '/controller/register([a-z0-9_-]+)?', function() {
-    require ROOT.DS.'controllers'.DS.'users'.DS.'add_user_controller.php';
+    require ROOT.DS.'controllers'.DS.'add_user_controller.php';
 });
 
 $router->match('GET|POST', '/controller/login([a-z0-9_-]+)?', function() {
-    require ROOT.DS.'controllers'.DS.'users'.DS.'select_user_controller.php';
+    require ROOT.DS.'controllers'.DS.'select_user_controller.php';
 });
 
 $router->match('GET|POST', '/controller/update([a-z0-9_-]+)?', function() {
-    require ROOT.DS.'controllers'.DS.'users'.DS.'update_user_controller.php';
+    require ROOT.DS.'controllers'.DS.'update_user_controller.php';
 });
 
 $router->match('GET|POST', '/controller/change-password([a-z0-9_-]+)?', function() {
-    require ROOT.DS.'controllers'.DS.'users'.DS.'change_password_controller.php';
+    require ROOT.DS.'controllers'.DS.'change_password_controller.php';
 });
 
 $router->match('GET|POST', '/controller/user-listing([a-z0-9_-]+)?', function() {
-    require ROOT.DS.'controllers'.DS.'users'.DS.'update_user_listing_controller.php';
+    require ROOT.DS.'controllers'.DS.'update_user_listing_controller.php';
 });
 
 $router->match('GET|POST', '/controller/user-delete([a-z0-9_-]+)?', function() {
-    require ROOT.DS.'controllers'.DS.'users'.DS.'delete_user_controller.php';
+    require ROOT.DS.'controllers'.DS.'delete_user_controller.php';
+});
+
+$router->match('GET|POST', '/controller/add-user([a-z0-9_-]+)?', function() {
+    require ROOT.DS.'controllers'.DS.'add_user_listing_controller.php';
+});
+
+$router->match('GET|POST', '/controller/account-delete([a-z0-9_-]+)?', function() {
+    require ROOT.DS.'controllers'.DS.'delete_user_account_controller.php';
 });
  
 
 /* --- views route --- */
 $router->get('', function() {
-    require ROOT.DS.'views'.DS.'public'.DS.'index.php';
+    require ROOT.DS.'views'.DS.'index.php';
 });
 
 $router->get('/', function() {
-    require ROOT.DS.'views'.DS.'public'.DS.'index.php';
+    require ROOT.DS.'views'.DS.'index.php';
 });
 
 $router->get('/home', function() {
-    require ROOT.DS.'views'.DS.'public'.DS.'index.php';
+    require ROOT.DS.'views'.DS.'index.php';
 });
 
 $router->get('/register', function() {
-    require ROOT.DS.'views'.DS.'users'.DS.'register.php';
+    require ROOT.DS.'views'.DS.'register.php';
 });
 
 $router->get('/login', function() {
-    require ROOT.DS.'views'.DS.'users'.DS.'login.php';
+    require ROOT.DS.'views'.DS.'login.php';
 });
 
 $router->get('/update', function() {
-    require ROOT.DS.'views'.DS.'users'.DS.'update.php';
+    require ROOT.DS.'views'.DS.'update.php';
 });
 
 $router->get('/change-password', function() {
-    require ROOT.DS.'views'.DS.'users'.DS.'change-password.php';
-});
-
-$router->get('/members', function() {
-    require ROOT.DS.'views'.DS.'users'.DS.'members.php';
+    require ROOT.DS.'views'.DS.'change-password.php';
 });
 
 $router->get('/admin', function() {
-    require ROOT.DS.'views'.DS.'users'.DS.'admin.php';
+    require ROOT.DS.'views'.DS.'admin.php';
 });
 
 $router->get('/logout', function() {
-    require ROOT.DS.'views'.DS.'users'.DS.'logout.php';
+    require ROOT.DS.'views'.DS.'logout.php';
 });
 
 $router->run();

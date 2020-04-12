@@ -1,3 +1,4 @@
+/* register user */
 function register_user() {
   $(document).on("click", "#btn-register", function (e) {
     e.preventDefault();
@@ -36,7 +37,7 @@ function register_user() {
             if (data.success == true) {
               Swal({
                 title: "Success!",
-                text: "Login Successfully.",
+                text: "Register Successfully.",
                 type: "success",
                 confirmButtonText: "OK",
                 closeOnConfirm: false,
@@ -72,6 +73,7 @@ function register_user() {
     }
   });
 }
+/* end of register user */
 
 /* select user */
 function login_user(){
@@ -104,7 +106,7 @@ function login_user(){
                          closeOnConfirm: false
                      }).then((result) => {
                          if (result.value) {
-                             window.location.href = base_url+"members";
+                             window.location.href = base_url+"home";
                          }
                      })
 
@@ -386,7 +388,7 @@ function delete_user(){
                  success : function(data){
                      Swal.fire({
                          title: "Deleted!",
-                         text: "Your file has been deleted.",
+                         text: "Account has been deleted.",
                          type: "success",
                          timer: 3000
                      }).then((result) => {
@@ -410,6 +412,139 @@ function delete_user(){
 }
 /* end of delete user listing */
 
+/* add user listing */
+function add_user() {
+  $(document).on("click", "#btn-add-user", function (e) {
+    e.preventDefault();
+
+    var fullname = $("#fullname").val();
+    var email = $("#email").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
+    var confirm_password = $("#confirmPassword").val();
+
+    if (password != confirm_password) {
+      Swal({
+        title: "Warning!",
+        text: "Password and Confirm Password dint Match!",
+        type: "warning",
+        confirmButtonText: "OK",
+        closeOnConfirm: false,
+      });
+    } else {
+      if (email != "" && password != "" && fullname != "" &&  username != "" && confirm_password != "") {
+        var fields = {
+          add_user: "add_user",
+          fullname: fullname,
+          email: email,
+          username: username,
+          password: password,
+          confirm_password: confirm_password,
+        };
+
+        jQuery.ajax({
+          url: base_url + "controller/add-user", 
+          type: "POST",
+          dataType: "JSON",
+          data: fields,
+          success: function (data) {
+            if (data.success == true) {
+              Swal({
+                title: "Success!",
+                text: "Added User.",
+                type: "success",
+                confirmButtonText: "OK",
+                closeOnConfirm: false,
+              }).then((result) => {
+                if (result.value) {
+                  window.location.href = base_url + "admin";
+                }
+              });
+            } else {
+              Swal({
+                title: "Error!",
+                text: "Email is Already Taken",
+                type: "error",
+                confirmButtonText: "OK",
+                closeOnConfirm: false,
+              }).then((result) => {
+                if (result.value) {
+                  // location.reload();
+                }
+              });
+            }
+          },
+        });
+      } else {
+        Swal({
+          title: "Warning!",
+          text: "Please fill in the selected inputs.",
+          type: "warning",
+          confirmButtonText: "OK",
+          closeOnConfirm: false,
+        });
+      }
+    }
+  });
+}
+/* end of add user listing */
+
+/* delete user account */
+function delete_user_account(){ 
+  $(document).on("click",".btn-delete-account",function(e) { 
+     e.preventDefault();
+
+     var btnDeleteAccount=$(this).val();
+
+     if(btnDeleteAccount!=""){
+
+         var fields = {
+             delete_user_account: "delete_user_account",
+             btnDeleteAccount: btnDeleteAccount
+         };
+
+         Swal.fire({
+           title: 'Are you sure?',
+           text: "You won't be able to revert this!",
+           type: 'warning',
+           showCancelButton: true,
+           confirmButtonColor: '#3085d6',
+           cancelButtonColor: '#d33',
+           confirmButtonText: 'Yes, delete it!'
+         }).then((result) => {
+           if (result.value) {
+                 jQuery.ajax({
+                 url : base_url+"controller/account-delete",
+                 type : "POST",
+                 dataType : "JSON",
+                 data : fields,
+                 success : function(data){
+                     Swal.fire({
+                         title: "Deleted!",
+                         text: "Your Account has been deleted.",
+                         type: "success",
+                         timer: 3000
+                     }).then((result) => {
+                       window.location.href = base_url+"logout";
+                     }) 
+                 }, 
+             });
+           }
+         })
+          
+     }else{
+         Swal.fire({
+             title: "Warning!",
+             text: "Please fill in the selected inputs.",
+             type: "warning",
+             confirmButtonText: "OK",
+             closeOnConfirm: false
+         })
+     }
+ });
+}
+/* end of delete user account */
+
 jQuery(function () {
   register_user();
   login_user();
@@ -417,4 +552,6 @@ jQuery(function () {
   changed_password();
   update_user_listing();
   delete_user();
+  add_user();
+  delete_user_account();
 });
